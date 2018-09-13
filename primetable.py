@@ -3,7 +3,7 @@ import primes
 import numpy as np
 
 if __name__ == "__main__":
-    primes10 = primes.get_primes(10)
+    primes10 = primes.get_primes_up_to_nth(10)
     size = len(primes10)
     rows = np.tile(primes10, (size, 1))
     for i, p in enumerate(primes10):
