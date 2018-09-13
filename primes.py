@@ -48,8 +48,7 @@ def get_primes_sieve(n):
     return [i + 2 for i, prime in enumerate(a) if prime and i + 2 <= n]
 
 
-def get_primes_up_to_nth(n):
-    # TODO Only for big n
+def get_primes_up_to_nth_sieve(n):
     limit = n * (math.log(n) + math.log(math.log(n)) - 1)  # From the Prime Number Theorem
     limit = math.ceil(limit * 1.10)  # better be sure
     primes = get_primes_sieve(limit)
@@ -57,3 +56,9 @@ def get_primes_up_to_nth(n):
         limit *= 1.2
         primes = get_primes_sieve(int(limit))
     return primes[0:n]
+
+def get_primes_up_to_nth_smart(n):
+    if n<100:
+        return get_primes_up_to_nth_simple(n)
+    else:
+        return get_primes_up_to_nth_sieve(n)

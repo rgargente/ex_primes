@@ -34,11 +34,14 @@ def test_get_primes_sieve(max, n):
 
 @pytest.mark.parametrize("n, function", [
     (10, primes.get_primes_up_to_nth_simple),
-    (10, primes.get_primes_up_to_nth),
+    (10, primes.get_primes_up_to_nth_sieve),
+    (10, primes.get_primes_up_to_nth_smart),
     (1000, primes.get_primes_up_to_nth_simple),
-    (1000, primes.get_primes_up_to_nth),
+    (1000, primes.get_primes_up_to_nth_sieve),
+    (1000, primes.get_primes_up_to_nth_smart),
     (10000, primes.get_primes_up_to_nth_simple),
-    (10000, primes.get_primes_up_to_nth)
+    (10000, primes.get_primes_up_to_nth_sieve),
+    (10000, primes.get_primes_up_to_nth_smart)
 ])
 def test_get_primes_up_to_nth(primelist, n, function):
     assert primelist[0:n] == function(n)
