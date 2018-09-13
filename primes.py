@@ -1,5 +1,7 @@
 import math
 
+import numpy as np
+
 
 def is_prime(n):
     """
@@ -21,13 +23,15 @@ def is_prime(n):
 
 
 def get_primes_up_to_nth_simple(n):
-    primes = []
+    primes = np.empty(n)
     i = 0
-    while len(primes) < n:
+    i_prime = 0
+    while i_prime < n:
         if is_prime(i):
-            primes.append(i)
+            primes[i_prime] = i
+            i_prime += 1
         i += 1
-    return primes
+    return primes.tolist()
 
 
 def get_primes_sieve(n):
@@ -39,7 +43,7 @@ def get_primes_sieve(n):
     """
     assert n > 1
 
-    a = [True] * (n - 1)
+    a = np.full(n - 1, True)
     for i in range(2, int(math.sqrt(n)) + 1):
         j = i ** 2
         while j <= n:
@@ -57,8 +61,9 @@ def get_primes_up_to_nth_sieve(n):
         primes = get_primes_sieve(int(limit))
     return primes[0:n]
 
+
 def get_primes_up_to_nth_smart(n):
-    if n<100:
+    if n < 100:
         return get_primes_up_to_nth_simple(n)
     else:
         return get_primes_up_to_nth_sieve(n)
