@@ -24,13 +24,14 @@ def is_prime(n):
 
 def get_primes_up_to_nth_simple(n):
     primes = np.empty(n)
-    i = 0
-    i_prime = 0
+    primes[0] = 2
+    i_prime = 1
+    i = 3
     while i_prime < n:
         if is_prime(i):
             primes[i_prime] = i
             i_prime += 1
-        i += 1
+        i += 2  # avoid even numbers as they are never prime except 2
     return primes.astype(int).tolist()
 
 
