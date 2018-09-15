@@ -31,7 +31,7 @@ def get_primes_up_to_nth_simple(n):
             primes[i_prime] = i
             i_prime += 1
         i += 1
-    return primes.tolist()
+    return primes.astype(int).tolist()
 
 
 def get_primes_sieve(n):
@@ -49,7 +49,7 @@ def get_primes_sieve(n):
         while j <= n:
             a[j - 2] = False
             j += i
-    return [i + 2 for i, prime in enumerate(a) if prime and i + 2 <= n]
+    return [i + 2 for i, prime in enumerate(a.astype(int)) if prime and i + 2 <= n]
 
 
 def get_primes_up_to_nth_sieve(n):
